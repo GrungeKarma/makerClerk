@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+:root {
+  --green: #18A558;
+  --darkGreen: #116530;
+  --accentGreen: #21B6A8;
+  --darkerGreen: #0b3d1d;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 3vh;
+}
+
+body {
+  background-color: var(--green);
+  font-family: "Ubuntu", sans-serif;
+  color: whitesmoke;
+
+}
+
+.grid-container {
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "head nav1 nav2"
+  "body1 body2 body3"
+  "body4 body5 body6"
+  "footer1 footer2 footer3";
+  grid-template-rows: 2fr 6fr 2fr;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+#logo {
+  grid-area: head;
+  background-color: var(--darkGreen);
+  height: 10vh;
+  padding-top: 2vh;
+  padding-left: 1vw;
+  font-size: xx-large;
+}
+
+.nav-container{
+  grid-column-start: nav1;
+  grid-column-end: nav2;
+  text-align: right;
+}
+
+.nav > * {
+  background: var(--darkerGreen);
+  text-align: center;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0.5rem;
+  border: 1em;
+  transition: all 0.5s;
+  border-radius: 4px;
+  width: auto;
+  text-decoration: none;
+}
+
+#bars{
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+/*@media (max-width: 550px) {
+  nav > .fa-bars {
+    display: none;
+  }
+}
+
+
+@media (min-width: 550px) {
+  .hidden--mobile {
+    display: none;
+  }
+}*/
+
+nav {
+  background-color: var(--darkGreen);
+  height: 10vh;
+}
+
+nav ul li{
+  display:inline-block;
+
+  text-align: right;
+  margin: 0 10px;
+  padding-top: 3vh;
+}
+
+a:hover {
+  background-color: var(--accentGreen);
+}
+
+#meat {
+  grid-area: body2;
+  text-align: center;
+  padding-top: 20vh;
+}
+
+#aboutMeat {
+  grid-area: body2;
+  text-align: center;
+  padding-top: 5vh;
+}
+
+#submit {
+  grid-area: body5;
+  background: var(--darkerGreen);
+  text-align: center;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 0.5rem;
+  border: 1em;
+  transition: all 0.5s;
+  border-radius: 4px;
+  width: 180px;
+  height: 60px;
+  text-decoration: none;
+}
+
+#submit:hover {
+  background-color: var(--accentGreen);
+}
+
+#submitApp {
+  grid-area: body5;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  font-size: xx-large;
+  padding-top: 5vh;
+}
+
+#application{
+  grid-area: body5;
+  background: var(--darkerGreen);
+  text-align: center;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 0.8em;
+  padding: 0.5rem;
+  border: 1em;
+  transition: all 0.5s;
+  border-radius: 4px;
+  width: 180px;
+  height: 60px;
+  text-decoration: none;
+  ;
+}
+#application:hover {
+  background-color: var(--accentGreen);
+}
+
+#app  {
+  display: flex;
+  grid-area: body5;
+  justify-content: center;
+  flex-wrap: nowrap;
+  font-size: xx-large;
+}
+
+#contact {
+  grid-area: footer3;
+  text-align: right;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: var(--darkGreen);
+  height: 10vh;
+  padding-top: 3vh;
+  padding-right: 1vw;
+}
+
