@@ -41,7 +41,7 @@ body {
   font-size: xx-large;
 }
 
-.nav-container{
+.nav-container {
   grid-column-start: nav1;
   grid-column-end: nav2;
   text-align: right;
