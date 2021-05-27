@@ -10,14 +10,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 3vh;
+  font-size: 2vh;
 }
 
 body {
   background-color: var(--green);
   font-family: "Ubuntu", sans-serif;
   color: whitesmoke;
-
 }
 
 .grid-container {
