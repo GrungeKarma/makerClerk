@@ -7,11 +7,12 @@ function render() {
   ${Main()}
   ${Footer()}
 `;
-  //addEventListeners();
+  addEventListeners();
 }
 render();
 
-//function addEventListeners() {
-//  document.querySelector(".fa-bars").addEventListener("click", () => {
-//    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
-//  });
+function addEventListeners() {
+  document.querySelector(".bars").addEventListener("click", () => {
+    document.querySelector("nav > ul").classList.toggle("hidden--mobile");
+  });
+}

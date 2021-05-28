@@ -17,7 +17,6 @@ body {
   background-color: var(--green);
   font-family: "Ubuntu", sans-serif;
   color: whitesmoke;
-
 }
 
 .grid-container {
@@ -36,12 +35,12 @@ body {
   grid-area: head;
   background-color: var(--darkGreen);
   height: 10vh;
-  padding-top: 2vh;
+  padding-top: 4vh;
   padding-left: 1vw;
-  font-size: xx-large;
+  font-size: 6vh;
 }
 
-.nav-container{
+.nav-container {
   grid-column-start: nav1;
   grid-column-end: nav2;
   text-align: right;
@@ -61,32 +60,30 @@ body {
   text-decoration: none;
 }
 
-#bars{
+#bars {
   padding-right: 1em;
   padding-left: 1em;
 }
 
-/*@media (max-width: 550px) {
+@media (max-width: 550px) {
   nav > .fa-bars {
     display: none;
   }
 }
 
-
 @media (min-width: 550px) {
   .hidden--mobile {
     display: none;
   }
-}*/
+}
 
 nav {
   background-color: var(--darkGreen);
   height: 10vh;
 }
 
-nav ul li{
-  display:inline-block;
-
+nav ul li {
+  display: inline-block;
   text-align: right;
   margin: 0 10px;
   padding-top: 3vh;
@@ -137,7 +134,7 @@ a:hover {
   padding-top: 5vh;
 }
 
-#application{
+#application {
   grid-area: body5;
   background: var(--darkerGreen);
   text-align: center;
@@ -157,7 +154,7 @@ a:hover {
   background-color: var(--accentGreen);
 }
 
-#app  {
+#app {
   display: flex;
   grid-area: body5;
   justify-content: center;
@@ -175,4 +172,3 @@ a:hover {
   padding-top: 3vh;
   padding-right: 1vw;
 }
-
