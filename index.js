@@ -1,15 +1,22 @@
 import { Header, Nav, Main, Footer } from "./components";
+import * as state from "./store";
 
-function render() {
+router
+  .on({
+    ":page": params => render(state[capitalize(params.page)]),
+    "/": () => render(state.Home)
+  })
+  .resolve();
+function render(st = state.Home) {
   document.querySelector("#root").innerHTML = `
-  ${Header()}
-  ${Nav()}
-  ${Main()}
+  ${Header(st)}
+  ${Nav(state.Links)}
+  ${Main(st)}
   ${Footer()}
 `;
-  addEventListeners();
+  router.updatePageLinks();
+  addEventListeners(st);
 }
-render();
 
 function addEventListeners() {
   document.querySelector(".bars").addEventListener("click", () => {
