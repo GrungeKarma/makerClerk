@@ -23,7 +23,7 @@ function render(st = state.Home) {
 }
 
 function addEventListeners() {
-  document.querySelector(".bars").addEventListener("click", () => {
+  document.querySelector(".fa-bars").addEventListener("click", () => {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
 }
