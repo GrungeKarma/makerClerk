@@ -1,7 +1,7 @@
 import html from "html-literal";
 
-export default st => html`
-  <div class="grid-container">
+export default () => html`
+  <div class="grid-container"></div>
     <div id="aboutMeat">
       <p id="about">
         Getting together a parts list for a project is hard enough without
