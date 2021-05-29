@@ -11,6 +11,7 @@ router
     "/": () => render(state.Home)
   })
   .resolve();
+
 function render(st = state.Home) {
   document.querySelector("#root").innerHTML = `
   ${Header(st)}
