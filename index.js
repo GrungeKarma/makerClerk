@@ -5,9 +5,14 @@ import { capitalize } from "lodash";
 import axios from "axios";
 const router = new Navigo(window.location.origin);
 
-axios
-  .get("https://api.quotable.io/random")
-  .then(response => console.log(response));
+var mainContainer = document.getElementById("quote");
+
+axios.get("https://api.quotable.io/random").then(response => {
+  let quote = JSON.stringify(response.content);
+  console.log(quote);
+  console.log(response);
+});
+
 router
   .on({
     ":page": params => render(state[capitalize(params.page)]),
