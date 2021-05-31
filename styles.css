@@ -45,7 +45,7 @@ body {
   padding-left: 1em;
 }
 
-@media (max-width: 549px){
+@media (max-width: 549px) {
   .hidden--mobile {
     display: none !important;
   }
@@ -64,7 +64,6 @@ body {
     flex-direction: column;
     background-color: var(--darkGreen);
     border-radius: 0px 0px 3px 3px;
-
   }
   nav > ul > li {
     padding: 0.5rem;
@@ -91,7 +90,7 @@ body {
 
 nav {
   background-color: var(--darkGreen);
-  height: 10vh;
+  height: 80px;
   border-radius: 0px 0px 3px 3px;
 }
 

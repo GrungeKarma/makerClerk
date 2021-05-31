@@ -3,6 +3,7 @@ import * as state from "./store";
 import Navigo from "navigo";
 import { capitalize } from "lodash";
 import axios from "axios";
+
 const router = new Navigo(window.location.origin);
 
 axios.get("https://api.quotable.io/random").then(response => {
