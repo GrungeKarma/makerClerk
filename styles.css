@@ -10,7 +10,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 3vh;
+  font-size: 20px;
 }
 
 body {
@@ -34,7 +34,7 @@ body {
 #logo {
   grid-area: head;
   background-color: var(--darkGreen);
-  height: 10vh;
+  height: 12vh;
   padding-top: 4vh;
   padding-left: 1vw;
   font-size: 6vh;
@@ -45,8 +45,6 @@ body {
   grid-column-end: nav2;
   text-align: right;
 }
-
-
 
 #bars {
   padding-right: 1em;
@@ -73,7 +71,7 @@ body {
     padding: 0 0;
   }
   nav > ul > li {
-    padding: .5rem;
+    padding: 0.5rem;
     list-style-type: none;
   }
 }
@@ -115,13 +113,24 @@ a:hover {
 #meat {
   grid-area: body2;
   text-align: center;
-  padding-top: 20vh;
+
 }
 
 #aboutMeat {
   grid-area: body2;
   text-align: center;
-  padding-top: 5vh;
+  padding-top: 1vh;
+}
+.quote {
+  margin-top: 1em;
+}
+
+#quote {
+  background-color: ;
+}
+
+#main {
+margin-bottom: 140px;
 }
 
 #contact {
@@ -130,7 +139,7 @@ a:hover {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--darkGreen);
-  height: 10vh;
+  height: 12vh;
   padding-top: 3vh;
   padding-right: 1vw;
 }
