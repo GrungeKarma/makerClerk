@@ -1,6 +1,6 @@
 import html from "html-literal";
 
-export default st => html`
+export default () => html`
   <div class="grid-container">
     <div id="aboutMeat">
       <p id="about">
