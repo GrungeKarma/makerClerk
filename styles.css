@@ -27,8 +27,8 @@ body {
   "body1 body2 body3"
   "body4 body5 body6"
   "footer1 footer2 footer3";
-  grid-template-rows: 2fr 6fr 2fr;
-  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 2fr 2fr 2fr;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 
 #logo {
@@ -68,7 +68,8 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 0 0;
+
+    background-color: var(--darkGreen);
   }
   nav > ul > li {
     padding: 0.5rem;
@@ -117,6 +118,7 @@ nav > ul > li:hover {
 #meat {
   grid-area: body2;
   text-align: center;
+  padding-top: 2vh;
 
 }
 
@@ -134,7 +136,7 @@ nav > ul > li:hover {
 }
 
 #main {
-margin-bottom: 140px;
+margin-bottom: 100px;
 }
 
 #contact {
