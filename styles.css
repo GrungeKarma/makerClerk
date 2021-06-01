@@ -10,7 +10,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 2vh;
+  font-size: 3vh;
 }
 
 body {
@@ -68,6 +68,7 @@ nav ul li * {
 #bars {
   padding-right: 1em;
   padding-left: 1em;
+  padding-top: 0.2em;
 }
 
 @media (max-width: 549px) {
@@ -115,7 +116,7 @@ nav ul li * {
 
 nav {
   background-color: var(--darkGreen);
-  height: 80px;
+  height: 110px;
   border-radius: 0px 0px 3px 3px;
 }
 
@@ -123,7 +124,7 @@ nav ul li {
   display: inline-block;
   text-align: right;
   margin: 0 0px;
-  padding-top: 1vh;
+  margin-top: 0.1vh;
 }
 
 nav > ul > li:hover {
@@ -133,7 +134,7 @@ nav > ul > li:hover {
 #meat {
   grid-area: body2;
   text-align: center;
-  padding-top: 2vh;
+  padding-top: 8vh;
 }
 
 #aboutMeat {
@@ -143,7 +144,7 @@ nav > ul > li:hover {
 }
 
 #quote {
-  margin-top: 10em;
+  margin-top: 5em;
 }
 
 #author {
@@ -184,17 +185,17 @@ nav > ul > li:hover {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--darkGreen);
-  height: 12vh;
+  height: 16vh;
   padding-top: 3vh;
   padding-right: 1vw;
   border-radius: 3px 3px 0px 0px;
 }
 
 #payPal {
-text-align: left;
-padding-left: 20px;
+  text-align: center;
+  margin-top: 1em;
 }
 
 #email {
-padding-top: 10px;
+  padding-top: 10px;
 }
