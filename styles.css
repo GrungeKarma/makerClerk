@@ -35,9 +35,9 @@ body {
   grid-area: head;
   background-color: var(--darkGreen);
   height: 12vh;
-  padding-top: 4vh;
+  padding-top: 2vh;
   padding-left: 1vw;
-  font-size: xx-large;
+  font-size: 65px;
 }
 
 .nav-container {
