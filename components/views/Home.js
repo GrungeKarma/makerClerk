@@ -6,7 +6,9 @@ export default () => html`
       <p id="main">Here at makerClerk, we make parts lists from Amazon links</p>
       <div id="quote">
         <p class="quote" id="quoteText"></p>
-        <p class="quote" id="quoteAuthor"></p>
+        <div id="author">
+          <p class="quote" id="quoteAuthor"></p>
+        </div>
       </div>
     </div>
   </div>

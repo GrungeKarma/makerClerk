@@ -141,12 +141,13 @@ nav > ul > li:hover {
   text-align: center;
   padding-top: 1vh;
 }
-.quote {
-  margin-top: 1em;
-}
 
 #quote {
-  background-color: ;
+  margin-top: 10em;
+}
+
+#author {
+  margin-top: 2em;
 }
 
 #application {
