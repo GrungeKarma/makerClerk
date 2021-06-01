@@ -20,7 +20,7 @@ body {
 }
 
 .grid-container {
-  height: 100vh;
+  height: 80vh;
   display: grid;
   grid-template-areas:
   "head nav1 nav2"
