@@ -46,6 +46,11 @@ body {
   text-align: right;
 }
 
+nav ul li * {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
 .nav > * {
   background: var(--darkerGreen);
   text-align: center;
@@ -121,11 +126,6 @@ nav ul li {
   padding-top: 1vh;
 }
 
-nav ul li * {
-  text-decoration: none;
-  color: whitesmoke;
-}
-
 nav > ul > li:hover {
   background-color: var(--accentGreen);
 }
@@ -187,4 +187,9 @@ nav > ul > li:hover {
   padding-top: 3vh;
   padding-right: 1vw;
   border-radius: 3px 3px 0px 0px;
+}
+
+#payPal {
+text-align: left;
+
 }
