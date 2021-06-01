@@ -8,9 +8,10 @@ export default () => html`
         <input type="hidden" name="hosted_button_id" value="8C8WL8QJ7LW4N" />
         <input
           type="image"
-          src="./lib/payPalButton.png"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
           border="0"
           name="submit"
+          height="30px"
           title="PayPal - The safer, easier way to pay online!"
           alt="Donate with PayPal button"
         />
