@@ -38,12 +38,14 @@ body {
   padding-top: 2vh;
   padding-left: 1vw;
   font-size: 65px;
+  padding-bottom: 20px;
 }
 
 .nav-container {
   grid-column-start: nav1;
   grid-column-end: nav2;
   text-align: right;
+
 }
 
 nav ul li * {
@@ -149,34 +151,6 @@ nav > ul > li:hover {
 
 #author {
   margin-top: 2em;
-}
-
-#application {
-  grid-area: body5;
-  background: var(--darkerGreen);
-  text-align: center;
-  color: whitesmoke;
-  cursor: pointer;
-  font-size: 0.8em;
-  padding: 0.5rem;
-  border: 1em;
-  transition: all 0.5s;
-  border-radius: 4px;
-  width: 180px;
-  height: 60px;
-  text-decoration: none;
-}
-
-#application:hover {
-  background-color: var(--accentGreen);
-}
-
-#app {
-  display: flex;
-  grid-area: body5;
-  justify-content: center;
-  flex-wrap: nowrap;
-  font-size: xx-large;
 }
 
 #contact {
