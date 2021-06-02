@@ -103,6 +103,7 @@ nav ul li * {
   nav > ul {
     display: flex;
     justify-content: space-evenly;
+    align-self: center;
   }
   nav > ul > li {
     display: inline-block;
