@@ -5,13 +5,13 @@ export default () => html`
     <p id="email">contact me: grungekarma@gmail.com</p>
     <div id="payPal">
       <form action="https://www.paypal.com/donate" method="post" target="_top">
-        <input type="hidden" name="hosted_button_id" value="8C8WL8QJ7LW4N" />
+        <input type="hidden" name="business" value="CCTA7MN5LZ3S6" />
+        <input type="hidden" name="currency_code" value="USD" />
         <input
           type="image"
-          src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+          src="https://i.ibb.co/Sr0Fh4K/pay-Pal-Button.png"
           border="0"
           name="submit"
-          height="30px"
           title="PayPal - The safer, easier way to pay online!"
           alt="Donate with PayPal button"
         />
