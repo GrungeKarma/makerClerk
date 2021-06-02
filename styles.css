@@ -160,7 +160,7 @@ nav > ul > li:hover {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--darkGreen);
-  height: 260px;
+  height: 300px;
   padding-top: 3vh;
   padding-right: 1vw;
   border-radius: 3px 3px 0px 0px;
