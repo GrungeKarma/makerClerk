@@ -12,10 +12,6 @@ const myMiddleware = (request, response, next) => {
 app.use(myMiddleware); // use the myMiddleware for every request to the app
 app.use(express.json());
 
-app.route("/**").get((request, response) => {
-  response.status(404).json({ message: "Not Found" });
-});
-
 app
   .route("/test")
   .get((request, response) => {
@@ -24,6 +20,10 @@ app
   .post((request, response) => {
     response.json(request.body);
   });
+
+app.route("/**").get((request, response) => {
+  response.status(404).json({ message: "Not Found" });
+});
 
 const PORT = process.env.PORT || 4040;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
