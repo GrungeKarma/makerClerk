@@ -16,5 +16,14 @@ app.route("/**").get((request, response) => {
   response.status(404).json({ message: "Not Found" });
 });
 
+app
+  .route("/test")
+  .get((request, response) => {
+    response.send("HELLO WORLD");
+  })
+  .post((request, response) => {
+    response.json(request.body);
+  });
+
 const PORT = process.env.PORT || 4040;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
