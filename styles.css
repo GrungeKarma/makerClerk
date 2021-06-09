@@ -34,7 +34,7 @@ body {
 #logo {
   grid-area: head;
   background-color: var(--darkGreen);
-  height: 12vh;
+  height: 16vh;
   padding-top: 2vh;
   padding-left: 1vw;
   font-size: 65px;
@@ -45,7 +45,6 @@ body {
   grid-column-start: nav1;
   grid-column-end: nav2;
   text-align: right;
-
 }
 
 nav ul li * {
@@ -85,6 +84,7 @@ nav ul li * {
   nav > i {
     padding: 1rem;
     font-size: 2em;
+
   }
   nav > ul {
     display: flex;
@@ -92,6 +92,7 @@ nav ul li * {
     flex-direction: column;
     background-color: var(--darkGreen);
     border-radius: 0px 0px 3px 3px;
+
   }
   nav > ul > li {
     padding: 0.5rem;
