@@ -84,7 +84,6 @@ nav ul li * {
   nav > i {
     padding: 1rem;
     font-size: 2em;
-
   }
   nav > ul {
     display: flex;
@@ -138,7 +137,7 @@ nav > ul > li:hover {
 #meat {
   grid-area: body2;
   text-align: center;
-  padding-top: 8vh;
+  padding-top: 2vh;
 }
 
 #aboutMeat {
@@ -148,11 +147,15 @@ nav > ul > li:hover {
 }
 
 #quote {
-  margin-top: 5em;
+  margin-top: 1em;
+  grid-area: body5;
+  text-align: center;
 }
 
 #author {
   margin-top: 2em;
+  grid-area: body5;
+  padding-bottom: 5px;
 }
 
 #contact {
@@ -161,7 +164,7 @@ nav > ul > li:hover {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--darkGreen);
-  height: 320px;
+  height: 390px;
   padding-top: 3vh;
   padding-right: 1vw;
   border-radius: 3px 3px 0px 0px;
@@ -173,5 +176,17 @@ nav > ul > li:hover {
 }
 
 #email {
+  grid-area: footer3;
+  text-align: right;
+}
+
+#question {
+  padding-left: 40px;
   padding-top: 10px;
+  grid-area: footer1;
+  text-align: left;
+}
+
+#mario {
+  width: 75px;
 }
