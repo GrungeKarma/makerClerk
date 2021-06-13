@@ -30,10 +30,22 @@ function render(st = state.Home) {
 `;
   router.updatePageLinks();
   addEventListeners(st);
+  urlAddEventListeners();
 }
 
 function addEventListeners() {
   document.querySelector(".fa-bars").addEventListener("click", () => {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
+}
+
+function urlAddEventListeners() {
+  document
+    .getElementById("inputButton")
+    .addEventListener("click", () => getURL());
+}
+
+function getURL() {
+  let target = document.getElementById("userInput").value;
+  console.log(target);
 }

@@ -5,12 +5,10 @@ export default () => html`
     <div id="meat">
       <div class="grid-item body" id="body">
         <form>
-          Link: <input type="text" />
-          <div id="submitApp">
-            <button id="submit" type="submit" form="form" value="submit">
-              Submit
-            </button>
-          </div>
+          <input id="userInput" type="text" id="formValueId" name="valueId" />
+          <button id="inputButton" type="button">
+            submit
+          </button>
         </form>
       </div>
     </div>
