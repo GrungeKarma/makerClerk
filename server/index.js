@@ -55,16 +55,12 @@ const List = mongoose.model("List", listSchema);
 const Link = mongoose.model("Link", linkSchema);
 
 app.post("/gen_data", (request, response) => {
-  //const newLink = new Link(request.body);
-
-  //newLink.save((err, item) => {
-  //return err ? response.sendStatus(500).json(err) : response.json(item);
-  //});
   const rand1 = Math.random()
     .toString(16)
     .substr(2, 8);
+  //generate random string to use as image name for manipulation
   async function amazonItemScraper(url) {
-    const act = (async () => {
+    (async () => {
       fs.mkdir("./image", err => {
         if (err) {
           return console.error(err);
@@ -141,31 +137,18 @@ app.post("/gen_data", (request, response) => {
       await browser.close();
       //closes puppeteer
 
-      //let imageGen = imageToBase64(save) // Path to the image
-      //  .then(response => {
-      //    let base64 = response;
-      //    return base64;
-      //    // "cGF0aC90by9maWxlLmpwZw=="
-      //  })
-      //  .catch(error => {
-      //    console.log(error); // Logs an error if there was one
-      //  });
-
       const convertImageBase64 = image => {
         let bitmap = fs.readFileSync(image);
         let base64 = new Buffer.from(bitmap).toString("base64");
         return base64;
       };
-      ////convert image to base64 for database storage
-      //let encodedPng = base64encode(save);
+      //convert image to base64 for database storage
+
       let scraperPayload = {
         image: convertImageBase64(save),
         name: nameGen,
         price: pricer
       };
-      let finalPayload = JSON.stringify(scraperPayload, null, 4);
-
-
 
       fs.rmdir("./image", { recursive: true, force: true }, err => {
         if (err) {
@@ -174,12 +157,12 @@ app.post("/gen_data", (request, response) => {
         console.log("Directory deleted successfully");
       });
       await scraperPayload;
-      return scraperPayload;
-    })();
+      const finalPayload = new List(scraperPayload);
 
-    await act;
-    console.log(act);
-    return act;
+      finalPayload.save((err, item) => {
+        return err ? response.sendStatus(500).json(err) : response.json(item);
+      });
+    })();
   }
   amazonItemScraper(request.body.link);
 });
