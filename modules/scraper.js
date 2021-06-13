@@ -1,19 +1,19 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
-const imageToBase64 = require("image-to-base64");
+const { base64encode, base64decode } = require("nodejs-base64");
+
+const rand1 = Math.random()
+  .toString(16)
+  .substr(2, 8);
 
 async function amazonItemScraper(url) {
-  const rand1 = Math.random()
-    .toString(16)
-    .substr(2, 8);
-
   const act = (async () => {
-    //fs.mkdir("./image", err => {
-    //  if (err) {
-    //    return console.error(err);
-    //  }
-    //  console.log("Directory created successfully!");
-    //});
+    fs.mkdir("./image", err => {
+      if (err) {
+        return console.error(err);
+      }
+      console.log("Directory created successfully!");
+    });
 
     let imageUrl = url;
     let imagePath = `./image`;
@@ -99,15 +99,15 @@ async function amazonItemScraper(url) {
       let base64 = new Buffer.from(bitmap).toString("base64");
       return base64;
     };
-    //convert image to base64 for database storage
-
+    ////convert image to base64 for database storage
+    let encodedPng = base64encode(save);
     let scraperPayload = {
-      image: convertImageBase64(save),
+      image: encodedPng,
       name: nameGen,
       price: pricer
     };
 
-    console.log(JSON.stringify(scraperPayload, null, 4));
+    //console.log(JSON.stringify(scraperPayload, null, 4));
 
     fs.rmdir("./image", { recursive: true, force: true }, err => {
       if (err) {
@@ -116,12 +116,21 @@ async function amazonItemScraper(url) {
       console.log("Directory deleted successfully");
     });
     await scraperPayload;
-    console.log(scraperPayload);
     return scraperPayload;
   })();
+
   await act;
   console.log(act);
   return act;
 }
 
-export { amazonItemScraper };
+let monkey = amazonItemScraper(
+  "https://www.amazon.com/Steampunk-Motorcycle-Shoulder-Messenger-Accessories/dp/B0824XSXWZ/?_encoding=UTF8&pd_rd_w=zBhxj&pf_rd_p=7f7910c3-6ba4-46f6-862f-30a9e7159e69&pf_rd_r=AJ096DK7527EKEHMMRQ6&pd_rd_r=314c6522-44a3-49c3-b071-e891993c4039&pd_rd_wg=dQKi7&ref_=pd_gw_bmx"
+);
+
+function buffering() {
+  console.log("Buffering");
+}
+setTimeout(buffering, 2000);
+
+console.log(monkey);

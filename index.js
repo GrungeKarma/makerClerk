@@ -49,3 +49,4 @@ function getURL() {
   let target = document.getElementById("userInput").value;
   console.log(target);
 }
+
