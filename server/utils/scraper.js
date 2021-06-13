@@ -122,14 +122,3 @@ async function amazonItemScraper(url) {
   console.log(act);
   return act;
 }
-
-let monkey = amazonItemScraper(
-  "https://www.amazon.com/Steampunk-Motorcycle-Shoulder-Messenger-Accessories/dp/B0824XSXWZ/?_encoding=UTF8&pd_rd_w=zBhxj&pf_rd_p=7f7910c3-6ba4-46f6-862f-30a9e7159e69&pf_rd_r=AJ096DK7527EKEHMMRQ6&pd_rd_r=314c6522-44a3-49c3-b071-e891993c4039&pd_rd_wg=dQKi7&ref_=pd_gw_bmx"
-);
-
-function buffering() {
-  console.log("Buffering");
-}
-setTimeout(buffering, 2000);
-
-console.log(monkey);
