@@ -42,17 +42,13 @@ app.use(cors);
 const listSchema = new mongoose.Schema({
   image: String,
   name: [String],
-  price: String
+  price: String,
+  link: String
 });
 //contract of the data
 
-const linkSchema = new mongoose.Schema({
-  link: String
-});
-
-//convert schema a Model with CRUD operators
+//convert schema a Model
 const List = mongoose.model("List", listSchema);
-const Link = mongoose.model("Link", linkSchema);
 
 app.post("/gen_data", (request, response) => {
   const rand1 = Math.random()
@@ -77,7 +73,6 @@ app.post("/gen_data", (request, response) => {
       //launch puppeteer
 
       await page.goto(imageUrl), { waitUntil: "networkidle2" };
-
       //sends puppeteer to the url and waits until everything is rendered
 
       await page.waitForSelector("#landingImage");
@@ -101,7 +96,8 @@ app.post("/gen_data", (request, response) => {
 
       const priceSelectors = [
         "#priceblock_ourprice",
-        "#priceblock_dealprice" /* more here if you find more selectors */
+        "#priceblock_dealprice"
+        /* more here if you find more selectors */
       ];
       //define price selectors
 
@@ -145,9 +141,10 @@ app.post("/gen_data", (request, response) => {
       //convert image to base64 for database storage
 
       let scraperPayload = {
-        image: convertImageBase64(save),
+        link: request.body.link,
         name: nameGen,
-        price: pricer
+        price: pricer,
+        image: convertImageBase64(save)
       };
 
       fs.rmdir("./image", { recursive: true, force: true }, err => {
@@ -165,17 +162,6 @@ app.post("/gen_data", (request, response) => {
     })();
   }
   amazonItemScraper(request.body.link);
-});
-
-app.post("/item", (request, response) => {
-  const newItem = new List(request.body);
-  newItem.save((err, item) => {
-    return err ? response.sendStatus(500).json(err) : response.json(item);
-  });
-});
-
-app.route("/test").post((request, response) => {
-  response.send(`${request.id} ${request.body}`);
 });
 
 app.route("/**").get((request, response) => {

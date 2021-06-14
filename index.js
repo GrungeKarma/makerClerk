@@ -47,5 +47,25 @@ function urlAddEventListeners() {
 
 function getURL() {
   let target = document.getElementById("userInput").value;
-  console.log(target);
-}
+  let superTarget = JSON.stringify({ link: target }, null);
+  console.log(superTarget);
+
+  fetch(`http://localhost:6060/gen_data`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ link: target }, null, 1)
+  })
+    .then(res => res.json())
+    .then(res => console.log(res));
+  //fetch("http:localhost:6060/gen_data", {
+  //  method: "post",
+  //  headers: {
+  //    "Content-Type": "application/json"
+  //  },
+  //  body: JSON.stringify(target, null, 1)
+  //})
+  //  .then(res => res.json())
+  //  .then(res => console.log(res));
+} //
