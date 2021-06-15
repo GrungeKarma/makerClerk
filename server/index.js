@@ -63,24 +63,24 @@ app.post("/gen_data", (request, response) => {
         }
         console.log("Directory created successfully!");
       });
+      //create a directory to store image
 
       let imageUrl = url;
       let imagePath = `./image`;
-      //assign a name to url and the path for saving images
+      //assign a name to url and the path for saving image
 
       const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
-
       let page = await browser.newPage();
       //launch puppeteer
 
       await page.goto(imageUrl), { waitUntil: "networkidle2" };
-      //sends puppeteer to the url and waits until everything is rendered
+      //send puppeteer to the url and waits until everything is rendered
 
       await page.waitForSelector("#landingImage");
       let element1 = await page.$("#landingImage");
       let save = `${imagePath}/${rand1}.png`;
       await element1.screenshot({ path: save });
-      //screenshot the image
+      //screenshot and save the image
 
       await page.waitForSelector("#productTitle");
       //send browser to url and waits for rendering and the selector
@@ -90,7 +90,7 @@ app.post("/gen_data", (request, response) => {
         //regex to remove the spaces in the html content
 
         let name = document.getElementById("productTitle").textContent;
-        let cleanName = name.match(nameRegex);
+        let cleanName = name.match(nameRegex); //apply regex from the element
         return cleanName;
         // grabs name of the item
       });
@@ -147,6 +147,7 @@ app.post("/gen_data", (request, response) => {
         price: pricer,
         image: convertImageBase64(save)
       };
+      //convert data to object
 
       fs.rmdir("./image", { recursive: true, force: true }, err => {
         if (err) {
@@ -154,16 +155,27 @@ app.post("/gen_data", (request, response) => {
         }
         console.log("Directory deleted successfully");
       });
+      //remove the directory and image after processing
+
       await scraperPayload;
+      //make sure data is ready
+
       const finalPayload = new List(scraperPayload);
+      //convert object to schema
 
       finalPayload.save((err, item) => {
+        //save item to database
+
         return err ? response.sendStatus(500).json(err) : response.json(item);
+        //returns processed data
       });
     })();
   }
   console.log(request.body.link);
+  //backend data monitoring
+
   amazonItemScraper(request.body.link);
+  //call function to process data
 });
 
 app.route("/**").get((request, response) => {

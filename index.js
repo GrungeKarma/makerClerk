@@ -49,6 +49,8 @@ function getURL() {
   let target = document.getElementById("userInput").value;
   let superTarget = JSON.stringify({ link: target }, null);
   console.log(superTarget);
+  let empty = document.getElementById("userInput");
+  empty.reset();
 
   fetch(`${process.env.MAKER_API_URL}/gen_data`, {
     method: "POST",
@@ -59,13 +61,4 @@ function getURL() {
   })
     .then(res => res.json())
     .then(res => console.log(res));
-  //fetch("http:localhost:6060/gen_data", {
-  //  method: "post",
-  //  headers: {
-  //    "Content-Type": "application/json"
-  //  },
-  //  body: JSON.stringify(target, null, 1)
-  //})
-  //  .then(res => res.json())
-  //  .then(res => console.log(res));
 } //

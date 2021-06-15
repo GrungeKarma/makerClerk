@@ -91,11 +91,13 @@ nav ul li * {
     flex-direction: column;
     background-color: var(--darkGreen);
     border-radius: 0px 0px 3px 3px;
-
   }
   nav > ul > li {
     padding: 0.5rem;
     list-style-type: none;
+  }
+  #inputButton {
+    margin-top: .5em;
   }
 }
 
@@ -115,6 +117,7 @@ nav ul li * {
   nav > .fa-bars {
     display: none;
   }
+
 }
 
 nav {
@@ -189,4 +192,23 @@ nav > ul > li:hover {
 
 #mario {
   width: 75px;
+}
+
+#inputButton {
+  background: var(--darkerGreen);
+  text-align: center;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 1em;
+  border: 1em;
+  transition: all 0.5s;
+  border-radius: 4px;
+  width: auto;
+  text-decoration: none;
+  padding: .2em;
+  margin-top: .5em;
+}
+#userInput {
+  width: 400px;
+  background-color: whitesmoke;
 }
