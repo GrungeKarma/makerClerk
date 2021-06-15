@@ -66,14 +66,17 @@ function getURL() {
       console.log(name, price, link);
       let listHtml = `
       <div class="bigBang">
-        <div class="itemName">
-          ${name}
-        </div>
-        <div class="itemPrice">
-          ${price}
-        </div>
-        <div class="itemImage">
-          <img src="data:image/png;base64,${image}"id="bigBangImage"/>
+        <div class="cardContainer">
+          <a id="nameLink" target="_blank" href="${link}">
+            ${name}
+          </a>
+          <div class="itemImage">
+            <img src="data:image/png;base64,${image}"id="bigBangImage"/>
+          </div>
+          <div class="itemPrice">
+            ${price}
+          </div>
+
         </div>
       </div>
       `;

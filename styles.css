@@ -224,7 +224,7 @@ nav > ul > li:hover {
   margin: 10px;
 }
 
-#itemImage {
-  width: 50px;
-  background-size: 50px;
+#nameLink {
+  text-decoration: none;
+  color: black;
 }
