@@ -163,6 +163,9 @@ app.post("/gen_data", (request, response) => {
       const finalPayload = new List(scraperPayload);
       //convert object to schema
 
+      console.log(finalPayload);
+      //info for server monitoring
+
       finalPayload.save((err, item) => {
         //save item to database
 
