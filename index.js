@@ -49,8 +49,6 @@ function getURL() {
   let target = document.getElementById("userInput").value;
   let superTarget = JSON.stringify({ link: target }, null);
   console.log(superTarget);
-  let empty = document.getElementById("userInput");
-  empty.reset();
 
   fetch(`${process.env.MAKER_API_URL}/gen_data`, {
     method: "POST",
