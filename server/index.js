@@ -68,10 +68,7 @@ app.post("/gen_data", (request, response) => {
       let imagePath = `./image`;
       //assign a name to url and the path for saving images
 
-      const browser = await puppeteer.launch({
-        headless: false,
-        args: ["--no-sandbox"]
-      });
+      const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
 
       let page = await browser.newPage();
       //launch puppeteer
