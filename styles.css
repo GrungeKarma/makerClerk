@@ -208,7 +208,23 @@ nav > ul > li:hover {
   padding: .2em;
   margin-top: .5em;
 }
+
 #userInput {
   width: 400px;
   background-color: whitesmoke;
+}
+
+#bigBangPayload {
+  grid-area: body5;
+  background-color: whitesmoke;
+  border: solid 2px rgba(102, 102, 102, 0.5);
+  color: black;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+#itemImage {
+  width: 50px;
+  background-size: 50px;
 }

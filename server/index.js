@@ -55,6 +55,7 @@ app.post("/gen_data", (request, response) => {
     .toString(16)
     .substr(2, 8);
   //generate random string to use as image name for manipulation
+
   async function amazonItemScraper(url) {
     (async () => {
       fs.mkdir("./image", err => {

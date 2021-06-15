@@ -58,5 +58,25 @@ function getURL() {
     body: JSON.stringify({ link: target }, null, 1)
   })
     .then(res => res.json())
-    .then(res => console.log(res));
-} //
+    .then(res => {
+      let image = res.image;
+      let name = res.name[0];
+      let price = res.price;
+      let link = res.link;
+      console.log(name, price, link);
+      let listHtml = `
+      <div class="bigBang">
+        <div class="itemName">
+          ${name}
+        </div>
+        <div class="itemPrice">
+          ${price}
+        </div>
+        <div class="itemImage">
+          <img src="data:image/png;base64,${image}"id="bigBangImage"/>
+        </div>
+      </div>
+      `;
+      document.querySelector("#bigBangPayload").innerHTML = listHtml;
+    });
+}
