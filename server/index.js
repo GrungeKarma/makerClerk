@@ -70,7 +70,12 @@ app.post("/gen_data", (request, response) => {
 
       const browser = await puppeteer.launch({
         headless: false,
-        args: ["--no-sandbox", "--disable-setuid-sandbox"]
+        args: [
+          "--no-sandbox",
+          "--disable-setuid-sandbox",
+          "--disable-gpu",
+          "--no-sandbox"
+        ]
       });
 
       let page = await browser.newPage();
