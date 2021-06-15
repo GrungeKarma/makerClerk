@@ -161,6 +161,7 @@ app.post("/gen_data", (request, response) => {
       });
     })();
   }
+  console.log(request.body.link);
   amazonItemScraper(request.body.link);
 });
 
