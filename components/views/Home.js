@@ -14,7 +14,5 @@ export default () => html`
         <p class="quote" id="quoteAuthor"></p>
       </div>
     </div>
-
-    </div>
   </div>
 `;
