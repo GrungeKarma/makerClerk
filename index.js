@@ -50,7 +50,7 @@ function getURL() {
   let superTarget = JSON.stringify({ link: target }, null);
   console.log(superTarget);
 
-  fetch(`http://localhost:6060/gen_data`, {
+  fetch(`${process.env.MAKER_API_URL}/gen_data`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
