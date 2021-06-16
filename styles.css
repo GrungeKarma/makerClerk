@@ -17,10 +17,11 @@ body {
   background-color: var(--green);
   font-family: "Ubuntu", sans-serif;
   color: whitesmoke;
+  text-align: center;
 }
 
 .grid-container {
-  height: 100vh;
+  height: 125vh;
   display: grid;
   grid-template-areas:
   "head nav1 nav2"
@@ -36,9 +37,11 @@ body {
   background-color: var(--darkGreen);
   height: 16vh;
   padding-top: 2vh;
-  padding-left: 1vw;
   font-size: 65px;
   padding-bottom: 20px;
+  justify-self: flex-start;
+  padding-right: 100%;
+  padding-left: 1em;
 }
 
 .nav-container {
@@ -141,6 +144,7 @@ nav > ul > li:hover {
   grid-area: body2;
   text-align: center;
   padding-top: 2vh;
+
 }
 
 #aboutMeat {
@@ -167,8 +171,8 @@ nav > ul > li:hover {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--darkGreen);
-  height: 390px;
-  padding-top: 3vh;
+  height: 58vh;
+  padding-top: 3em;
   padding-right: 1vw;
   border-radius: 3px 3px 0px 0px;
 }
@@ -210,7 +214,8 @@ nav > ul > li:hover {
 }
 
 #userInput {
-  width: 400px;
+  text-align: center;
+  width: 100%;
   background-color: whitesmoke;
   border-radius: 10px;
 }
@@ -229,4 +234,10 @@ nav > ul > li:hover {
 #nameLink {
   text-decoration: none;
   color: black;
+}
+
+#main {
+  display: inline-block;
+  grid-area: body5;
+  text-align: center;
 }

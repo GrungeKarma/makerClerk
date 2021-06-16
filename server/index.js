@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const fs = require("fs");
 const puppeteer = require("puppeteer");
+const resizeImg = require('resize-img');
 
 mongoose.connect(process.env.DB_CONNECT);
 const app = express();
@@ -134,6 +135,17 @@ app.post("/gen_data", (request, response) => {
 
       await browser.close();
       //closes puppeteer
+
+      const resize = (async () => {
+        const image = await resizeImg(fs.readFileSync(`${save}`), {
+            width: 128,
+            height: 128
+        });
+        fs.writeFileSync(`${save}`, image);
+      })();
+      //resize png for card display
+
+      await resize;
 
       const convertImageBase64 = image => {
         let bitmap = fs.readFileSync(image);

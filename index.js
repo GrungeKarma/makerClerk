@@ -76,7 +76,11 @@ function getURL() {
         flex-direction: row;
         ">
           <div class="itemImage" style="
-          padding 10px;
+          padding: 10px;
+          flex: 3;
+          height: 100%;
+          width: 100%;
+          object-fit: contain;
           ">
             <img src="data:image/png;base64,${image}"id="bigBangImage"/>
           </div>
@@ -84,21 +88,30 @@ function getURL() {
           padding: 10px;
           display: flex;
           flex-direction: column;">
+            <div>
             <a id="nameLink" target="_blank" href="${link}" style="
             font-size: 1em;
             margin: 10px;
+            text-align: right;
             ">
               ${name}
             </a>
+            </div>
+            <div>
             <p style="
             font-size: 2em;
-            margin-top: 30px;
+            margin-top: 10px;
+            display: inline-grid;
+            text-align: right;
+
             ">
             ${price}</p>
+            </div>
           </div>
         </div>
       </div>
       `;
+      console.log(listHtml);
       document.querySelector("#bigBangPayload").innerHTML = listHtml;
     });
 }
