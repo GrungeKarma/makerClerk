@@ -6,7 +6,7 @@ import axios from "axios";
 
 const router = new Navigo(window.location.origin);
 
-axios.get("https://api.quotable.io/random").then(response => {
+axios.get("https://api.quotable.io/random?tags=technology||famous-quotes").then(response => {
   let quote = response.data.content;
   let author = response.data.author;
   console.log(quote, author);

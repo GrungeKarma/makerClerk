@@ -50,6 +50,7 @@ body {
   grid-column-start: nav1;
   grid-column-end: nav2;
   text-align: right;
+  width: 100vw
 }
 
 nav ul li * {
@@ -138,12 +139,14 @@ nav ul li {
   margin-top: 0.1vh;
 }
 
-nav > ul > li:hover {
+nav > ul > *:hover {
   background-color: var(--accentGreen);
 }
 
 #meat {
   grid-area: body2;
+  grid-column-start: body1;
+  grid-column-end: body3;
   text-align: center;
   padding-top: 2vh;
 
@@ -151,6 +154,8 @@ nav > ul > li:hover {
 
 #aboutMeat {
   grid-area: body2;
+  grid-column-start: body1;
+  grid-column-end: body3;
   text-align: center;
   padding-top: 1vh;
 }
@@ -210,9 +215,13 @@ nav > ul > li:hover {
   transition: all 0.5s;
   border-radius: 4px;
   width: auto;
-  text-decoration: none;
+  text-decoration: 0;
   padding: .2em;
   margin-top: .5em;
+}
+
+#inputButton:hover {
+  background-color: var(--accentGreen);
 }
 
 #userInput {
@@ -229,7 +238,9 @@ nav > ul > li:hover {
   border-radius: 10px;
   padding: 10px;
   margin: 10px;
-  display: flex;
+  display: inline-block;
+  min-width: auto;
+  max-width: 800px;
 }
 
 #nameLink {
