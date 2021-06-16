@@ -11,7 +11,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-size: 3vh;
+  font-size: 1.15em;
   color: var(--white);
 }
 
@@ -105,6 +105,7 @@ nav ul li * {
   #inputButton {
     margin-top: .5em;
   }
+
 }
 
 @media (min-width: 550px) {
@@ -178,7 +179,7 @@ nav > ul > *:hover {
   grid-column-start: 1;
   grid-column-end: 4;
   background-color: var(--darkGreen);
-  height: 58vh;
+  height: max-content;
   padding-top: 3em;
   padding-right: 1vw;
   border-radius: 3px 3px 0px 0px;
@@ -227,12 +228,15 @@ nav > ul > *:hover {
 #userInput {
   background-color: var(--white);
   border-radius: 10px;
-  color: black
+  color: black;
+  width: 8em;
 }
 
 #bigBangPayload {
   display: flex;
   justify-content: center;
+  min-width: min-content;
+
 }
 
 #bigBangPayload > *{
@@ -244,17 +248,21 @@ nav > ul > *:hover {
   padding: 10px;
   margin: 10px;
   display: inline-block;
-  min-width: auto;
   max-width: 800px;
 }
 
 #nameLink {
   text-decoration: none;
   color: black;
+  font-size: 14px;
+  display: flex;
 }
 
 #main {
   display: inline-block;
   grid-area: body5;
   text-align: center;
+}
+#price {
+  font-size: 0.5em;
 }

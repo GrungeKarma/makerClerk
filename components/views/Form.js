@@ -1,7 +1,7 @@
 import html from "html-literal";
 
 export default () => html`
-  <div class="grid-container">
+  <div class="grid-container" style="min-height: 100vh">
     <div id="meat">
       <div class="grid-item body" id="body">
         <form>

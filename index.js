@@ -71,6 +71,7 @@ function getURL() {
           color: black;
           border-radius: 10px;
           padding: 10px;
+          max-width: 75vw;
           margin: 10px;
           display: flex;
           flex-direction: row;
@@ -88,9 +89,8 @@ function getURL() {
             flex-direction: column;">
           <div>
             <a id="nameLink" target="_blank" href="${link}" style="
-              font-size: 1em;
               margin: 10px;
-              text-align: right;
+              text-align: center;
               display: flex;
               flex: 2;
             ">
@@ -98,8 +98,7 @@ function getURL() {
             </a>
           </div>
           <div>
-            <p style="
-              font-size: 2em;
+            <p id="price" style="
               margin: 10px;
               display: inline-grid;
               text-align: right;
@@ -116,5 +115,6 @@ function getURL() {
       `;
       console.log(listHtml);
       document.querySelector("#bigBangPayload").innerHTML = listHtml;
+      state.Gallery.pictures.push(listHtml);
     });
 }
