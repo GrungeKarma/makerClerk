@@ -83,7 +83,7 @@ function getURL() {
             <img src="data:image/png;base64,${image}"id="bigBangImage"/>
           </div>
           <div id="namePrice style="
-            padding: 10px;
+            padding: 5px;
             display: flex;
             flex-direction: column;">
           <div>
@@ -91,6 +91,8 @@ function getURL() {
               font-size: 1em;
               margin: 10px;
               text-align: right;
+              display: flex;
+              flex: 2;
             ">
               ${name}
             </a>

@@ -230,6 +230,11 @@ nav > ul > *:hover {
   color: black
 }
 
+#bigBangPayload {
+  display: flex;
+  justify-content: center;
+}
+
 #bigBangPayload > *{
   grid-area: body5;
   background-color: var(--white);
