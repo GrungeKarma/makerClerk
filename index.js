@@ -67,46 +67,47 @@ function getURL() {
       let listHtml = `
       <div class="bigBang">
         <div class="cardContainer" style="  grid-area: body5;
-        background-color: whitesmoke;
-        color: black;
-        border-radius: 10px;
-        padding: 10px;
-        margin: 10px;
-        display: flex;
-        flex-direction: row;
+          background-color: #f5f5f5;
+          color: black;
+          border-radius: 10px;
+          padding: 10px;
+          margin: 10px;
+          display: flex;
+          flex-direction: row;
+          border: solid 5px #21B6A8;
         ">
           <div class="itemImage" style="
-          padding: 10px;
-          flex: 3;
-          height: 100%;
-          width: 100%;
-          object-fit: contain;
+            padding: 10px;
+            object-fit: contain;
           ">
             <img src="data:image/png;base64,${image}"id="bigBangImage"/>
           </div>
           <div id="namePrice style="
-          padding: 10px;
-          display: flex;
-          flex-direction: column;">
-            <div>
+            padding: 10px;
+            display: flex;
+            flex-direction: column;">
+          <div>
             <a id="nameLink" target="_blank" href="${link}" style="
-            font-size: 1em;
-            margin: 10px;
-            text-align: right;
+              font-size: 1em;
+              margin: 10px;
+              text-align: right;
             ">
               ${name}
             </a>
-            </div>
-            <div>
+          </div>
+          <div>
             <p style="
-            font-size: 2em;
-            margin-top: 10px;
-            display: inline-grid;
-            text-align: right;
-
-            ">
-            ${price}</p>
-            </div>
+              font-size: 2em;
+              margin: 10px;
+              display: inline-grid;
+              text-align: right;
+              border: solid 5px #0b3d1d;
+              background-color: #116530;
+              border-radius: 10px;
+              color:#f5f5f5;
+              ">
+                ${price}
+            </p>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@
   margin: 0;
   box-sizing: border-box;
   font-size: 3vh;
+  color:#f5f5f5
 }
 
 body {
@@ -41,7 +42,7 @@ body {
   padding-bottom: 20px;
   justify-self: flex-start;
   padding-right: 100%;
-  padding-left: 1em;
+  padding-left: 1vw;
 }
 
 .nav-container {
@@ -214,10 +215,9 @@ nav > ul > li:hover {
 }
 
 #userInput {
-  text-align: center;
-  width: 100%;
   background-color: whitesmoke;
   border-radius: 10px;
+  color: black
 }
 
 #bigBangPayload > *{
