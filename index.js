@@ -46,9 +46,12 @@ function urlAddEventListeners() {
 }
 
 function getURL() {
+  const loading = `Retrieving Data...`;
   let target = document.getElementById("userInput").value;
   let superTarget = JSON.stringify({ link: target }, null);
   console.log(superTarget);
+
+  document.querySelector("#load").innerHTML = loading;
 
   fetch(`${process.env.MAKER_API_URL}/gen_data`, {
     method: "POST",
@@ -92,7 +95,6 @@ function getURL() {
               margin: 10px;
               text-align: center;
               display: flex;
-              flex: 2;
             ">
               ${name}
             </a>
@@ -106,6 +108,7 @@ function getURL() {
               background-color: #116530;
               border-radius: 10px;
               color:#f5f5f5;
+              font-size: 35px;
               ">
                 ${price}
             </p>
@@ -113,8 +116,15 @@ function getURL() {
         </div>
       </div>
       `;
+
       console.log(listHtml);
+
+
+      document.querySelector("#load").innerHTML = null;
       document.querySelector("#bigBangPayload").innerHTML = listHtml;
       state.Gallery.pictures.push(listHtml);
+
+
+
     });
 }

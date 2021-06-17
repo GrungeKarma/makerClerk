@@ -2,7 +2,7 @@
 :root {
   --green: #18A558;
   --darkGreen: #116530;
-  --accentGreen: #21B6A8;
+  --accentGreen: rgb(33, 182, 168);
   --darkerGreen: #0b3d1d;
   --white: #E8E8E8;
 }
@@ -78,7 +78,7 @@ nav ul li * {
   padding-top: 0.2em;
 }
 
-@media (max-width: 549px) {
+@media (max-width: 859px) {
   .hidden--mobile {
     display: none !important;
   }
@@ -97,6 +97,7 @@ nav ul li * {
     flex-direction: column;
     background-color: var(--darkGreen);
     border-radius: 0px 0px 3px 3px;
+    position: sticky;
   }
   nav > ul > li {
     padding: 0.5rem;
@@ -105,10 +106,9 @@ nav ul li * {
   #inputButton {
     margin-top: .5em;
   }
-
 }
 
-@media (min-width: 550px) {
+@media (min-width: 860px) {
   nav > ul {
     display: flex;
     justify-content: space-evenly;
@@ -120,9 +120,16 @@ nav ul li * {
     padding: 0.5rem 1rem;
     border-radius: 25px;
     background-color: var(--darkerGreen);
+
   }
   nav > .fa-bars {
     display: none;
+  }
+  #userInput {
+    margin-top: 180px;
+  }
+  #about {
+    padding-top: 300px;
   }
 
 }
@@ -158,7 +165,6 @@ nav > ul > *:hover {
   grid-column-start: body1;
   grid-column-end: body3;
   text-align: center;
-  padding-top: 1vh;
 }
 
 #quote {
@@ -211,13 +217,13 @@ nav > ul > *:hover {
   text-align: center;
   color: whitesmoke;
   cursor: pointer;
-  font-size: 1em;
-  border: 1em;
+  font-size: 40px;
+  border: 10px;
   transition: all 0.5s;
   border-radius: 4px;
   width: auto;
   text-decoration: 0;
-  padding: .2em;
+  padding: 10px;
   margin-top: .5em;
 }
 
@@ -236,7 +242,6 @@ nav > ul > *:hover {
   display: flex;
   justify-content: center;
   min-width: min-content;
-
 }
 
 #bigBangPayload > *{
@@ -265,4 +270,9 @@ nav > ul > *:hover {
 }
 #price {
   font-size: 0.5em;
+}
+#about{
+  max-width: 800px;
+  justify-self: center;
+  display: inline-block;
 }

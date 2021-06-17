@@ -16,6 +16,7 @@ export default () => html`
             submit
           </button>
         </form>
+        <div id="load"></div>
         <div id="bigBangPayload"></div>
       </div>
     </div>

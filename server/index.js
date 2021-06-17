@@ -138,8 +138,8 @@ app.post("/gen_data", (request, response) => {
 
       const resize = (async () => {
         const image = await resizeImg(fs.readFileSync(`${save}`), {
-            width: 128,
-            height: 128
+            width: 100,
+            height: 100
         });
         fs.writeFileSync(`${save}`, image);
       })();
