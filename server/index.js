@@ -72,19 +72,19 @@ app.post("/gen_data", (request, response) => {
       //assign a name to url and the path for saving image
 
       const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
-      let page = await browser.newPage();
+      let page = await browser.newPage().catch(e => console.error(e));
       //launch puppeteer
 
       await page.goto(imageUrl), { waitUntil: "networkidle2" };
       //send puppeteer to the url and waits until everything is rendered
 
-      await page.waitForSelector("#landingImage");
-      let element1 = await page.$("#landingImage");
+      await page.waitForSelector("#landingImage").catch(e => console.error(e));
+      let element1 = await page.$("#landingImage").catch(e => console.error(e));
       let save = `${imagePath}/${rand1}.png`;
-      await element1.screenshot({ path: save });
+      await element1.screenshot({ path: save }).catch(e => console.error(e));
       //screenshot and save the image
 
-      await page.waitForSelector("#productTitle");
+      await page.waitForSelector("#productTitle").catch(e => console.error(e));
       //send browser to url and waits for rendering and the selector
 
       let nameGen = await page.evaluate(() => {
@@ -99,7 +99,8 @@ app.post("/gen_data", (request, response) => {
 
       const priceSelectors = [
         "#priceblock_ourprice",
-        "#priceblock_dealprice"
+        "#priceblock_dealprice",
+        "#priceblock_saleprice"
         /* more here if you find more selectors */
       ];
       //define price selectors
@@ -107,8 +108,8 @@ app.post("/gen_data", (request, response) => {
       await page.waitForFunction(
         priceSelectors => document.querySelectorAll(priceSelectors).length,
         {},
-        priceSelectors // pass priceSelectors to wairForFunction
-      );
+        priceSelectors // pass priceSelectors to waitForFunction
+      ).catch(e => console.error(e));
 
       const pricer = await page.evaluate(priceSelectors => {
         const priceRegex = /^\D\d+(\.\d+)?$/;
@@ -130,7 +131,7 @@ app.post("/gen_data", (request, response) => {
           }
         });
         return price;
-      }, priceSelectors);
+      }, priceSelectors).catch(e => console.error(e));
       // pass priceSelectors to evaluate
 
       await browser.close();
@@ -145,7 +146,7 @@ app.post("/gen_data", (request, response) => {
       })();
       //resize png for card display
 
-      await resize;
+      await resize.catch(e => console.error(e));
 
       const convertImageBase64 = image => {
         let bitmap = fs.readFileSync(image);
@@ -170,7 +171,7 @@ app.post("/gen_data", (request, response) => {
       });
       //remove the directory and image after processing
 
-      await scraperPayload;
+      await scraperPayload.catch;
       //make sure data is ready
 
       const finalPayload = new List(scraperPayload);

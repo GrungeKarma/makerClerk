@@ -51,16 +51,6 @@ function printAddEventListeners() {
   });
 }
 
-function printDiv() {
-  let divToPrint = document.getElementById('final');
-  let popupWin = window.open('', '_blank', 'width=300,height=300');
-  popupWin.document.open();
-  popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
-  popupWin.document.close();
-}
-
-
-
 function urlAddEventListeners() {
   document
     .getElementById("inputButton")
@@ -127,7 +117,6 @@ function getURL() {
             padding: 5px;
             display: flex;
             flex-direction: column;">
-
           <div>
             <p id="price" style="
               margin: 10px;
@@ -139,9 +128,8 @@ function getURL() {
               color:#f5f5f5;
               font-size: 45px;
               display: inline-block;
-
-              ">
-                ${price}
+            ">
+              ${price}
             </p>
           </div>
         </div>
@@ -150,14 +138,9 @@ function getURL() {
 
       console.log(listHtml);
       document.querySelector("#userInput").value = null;
-
-
-
       document.querySelector("#load").innerHTML = null;
       document.querySelector("#bigBangPayload").innerHTML = listHtml;
       state.Gallery.pictures.push(listHtml);
-
-
 
     });
 }
