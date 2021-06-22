@@ -4,18 +4,11 @@ export default () => html`
   <div class="grid-container" style="min-height: 100vh">
     <div id="meat">
       <div class="grid-item body" id="body">
-        <form>
-          <input
-            id="userInput"
-            type="text"
-            id="formValueId"
-            autocomplete="off"
-            name="valueId"
-          />
-          <button id="inputButton" type="button">
-            submit
-          </button>
-        </form>
+        <textarea id="userInput" required placeholder="https://www.amazon.com/..." ></textarea>
+        <button id="inputButton" type="button">
+          submit
+        </button>
+
         <div id="load"></div>
         <div id="bigBangPayload"></div>
       </div>

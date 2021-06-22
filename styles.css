@@ -38,12 +38,13 @@ body {
   grid-area: head;
   background-color: var(--darkGreen);
   height: 16vh;
+  width: 100vw;
   padding-top: 2vh;
   font-size: 65px;
   padding-bottom: 20px;
   justify-self: flex-start;
-  padding-right: 100%;
-  padding-left: 1vw;
+  padding-right: 90%;
+
 }
 
 .nav-container {
@@ -106,9 +107,12 @@ nav ul li * {
   #inputButton {
     margin-top: .5em;
   }
+
+
 }
 
 @media (min-width: 860px) {
+
   nav > ul {
     display: flex;
     justify-content: space-evenly;
@@ -156,7 +160,8 @@ nav > ul > *:hover {
   grid-column-start: body1;
   grid-column-end: body3;
   text-align: center;
-  padding-top: 2vh;
+  padding-top: 0;
+  margin-top: -100px;
 
 }
 
@@ -168,7 +173,7 @@ nav > ul > *:hover {
 }
 
 #quote {
-  margin-top: 1em;
+  margin-top: -200px;
   grid-area: body5;
   text-align: center;
 }
@@ -226,6 +231,21 @@ nav > ul > *:hover {
   padding: 10px;
   margin-top: .5em;
 }
+#printButton {
+  background: var(--darkerGreen);
+  text-align: center;
+  color: whitesmoke;
+  cursor: pointer;
+  font-size: 40px;
+  border: 10px;
+  transition: all 0.5s;
+  border-radius: 4px;
+  width: auto;
+  text-decoration: 0;
+  padding: 10px;
+  margin-top: .5em;
+  margin-bottom: 10px;
+}
 
 #inputButton:hover {
   background-color: var(--accentGreen);
@@ -235,7 +255,11 @@ nav > ul > *:hover {
   background-color: var(--white);
   border-radius: 10px;
   color: black;
-  width: 8em;
+  width: 350px;
+  height: 50px;
+  font-size: 35px;
+  resize: none;
+  overflow: hidden;
 }
 
 #bigBangPayload {
@@ -253,7 +277,7 @@ nav > ul > *:hover {
   padding: 10px;
   margin: 10px;
   display: inline-block;
-  max-width: 800px;
+  max-width: 600px;
 }
 
 #nameLink {
@@ -275,4 +299,6 @@ nav > ul > *:hover {
   max-width: 800px;
   justify-self: center;
   display: inline-block;
+  margin-top: -100px;
+  padding-top: 0;
 }

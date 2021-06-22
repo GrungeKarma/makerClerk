@@ -31,6 +31,7 @@ function render(st = state.Home) {
   router.updatePageLinks();
   addEventListeners(st);
   urlAddEventListeners();
+  printAddEventListeners();
 }
 
 function addEventListeners() {
@@ -38,6 +39,27 @@ function addEventListeners() {
     document.querySelector("nav > ul").classList.toggle("hidden--mobile");
   });
 }
+
+
+
+function printAddEventListeners() {
+  document
+  .querySelector("#printButton")
+  .addEventListener("click", () =>{
+    printDiv();
+    console.log('button clicked');
+  });
+}
+
+function printDiv() {
+  let divToPrint = document.getElementById('final');
+  let popupWin = window.open('', '_blank', 'width=300,height=300');
+  popupWin.document.open();
+  popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+  popupWin.document.close();
+}
+
+
 
 function urlAddEventListeners() {
   document
@@ -48,8 +70,6 @@ function urlAddEventListeners() {
 function getURL() {
   const loading = `Retrieving Data...`;
   let target = document.getElementById("userInput").value;
-  let superTarget = JSON.stringify({ link: target }, null);
-  console.log(superTarget);
 
   document.querySelector("#load").innerHTML = loading;
 
@@ -74,41 +94,52 @@ function getURL() {
           color: black;
           border-radius: 10px;
           padding: 10px;
-          max-width: 75vw;
+          min-height: 300px;
+          max-width: 50vw;
           margin: 10px;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           border: solid 5px #21B6A8;
+          min-width: 300px;
+          justify-content: center;
+          align-items: center;
         ">
+        <div>
+          <a id="nameLink" target="_blank" href="${link}" style="
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            font-size: 25px;
+            text-decoration: none;
+            color: black;
+          ">
+            ${name}
+          </a>
+        </div>
           <div class="itemImage" style="
             padding: 10px;
-            object-fit: contain;
+            display: inline-flex;
+            justify-content: center;
           ">
             <img src="data:image/png;base64,${image}"id="bigBangImage"/>
           </div>
-          <div id="namePrice style="
+          <div id="namePrice" style="
             padding: 5px;
             display: flex;
             flex-direction: column;">
-          <div>
-            <a id="nameLink" target="_blank" href="${link}" style="
-              margin: 10px;
-              text-align: center;
-              display: flex;
-            ">
-              ${name}
-            </a>
-          </div>
+
           <div>
             <p id="price" style="
               margin: 10px;
-              display: inline-grid;
-              text-align: right;
+              width: min-content;
+              height: 65px;
               border: solid 5px #0b3d1d;
               background-color: #116530;
               border-radius: 10px;
               color:#f5f5f5;
-              font-size: 35px;
+              font-size: 45px;
+              display: inline-block;
+
               ">
                 ${price}
             </p>
@@ -118,6 +149,8 @@ function getURL() {
       `;
 
       console.log(listHtml);
+      document.querySelector("#userInput").value = null;
+
 
 
       document.querySelector("#load").innerHTML = null;
