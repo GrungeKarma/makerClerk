@@ -46,10 +46,15 @@ const listSchema = new mongoose.Schema({
   price: String,
   link: String
 });
-//contract of the data
 
-//convert schema a Model
+const downloadSchema = new mongoose.Schema({
+  html: [String]
+});
+//contracts of the data
+
+//convert schemas into Models
 const List = mongoose.model("List", listSchema);
+const Download = mongoose.model("Download", downloadSchema);
 
 app.post("/gen_data", (request, response) => {
   const rand1 = Math.random()
@@ -101,7 +106,7 @@ app.post("/gen_data", (request, response) => {
         "#priceblock_ourprice",
         "#priceblock_dealprice",
         "#priceblock_saleprice"
-        /* more here if you find more selectors */
+        /* add selectors as you find them on amazon */
       ];
       //define price selectors
 
@@ -119,7 +124,6 @@ app.post("/gen_data", (request, response) => {
         const priceElements = document.querySelectorAll(asSingleSelector);
         let price;
         // combines the price selectors and selects them
-
         priceElements.forEach(item => {
           if (
             item && // item is not null
@@ -134,57 +138,51 @@ app.post("/gen_data", (request, response) => {
       }, priceSelectors).catch(e => console.error(e));
       // pass priceSelectors to evaluate
 
-      await browser.close();
+    await browser.close();
       //closes puppeteer
 
-      const resize = (async () => {
-        const image = await resizeImg(fs.readFileSync(`${save}`), {
-            width: 150,
-            height: 100
-        });
-        fs.writeFileSync(`${save}`, image);
-      })();
-      //resize png for card display
+    const resize = (async () => {
+      const image = await resizeImg(fs.readFileSync(`${save}`), {
+          width: 150,
+          height: 100
+      });
+      fs.writeFileSync(`${save}`, image);
+    })();
+    //resize png for card display
 
-      await resize.catch(e => console.error(e));
+    await resize.catch(e => console.error(e));
 
-      const convertImageBase64 = image => {
-        let bitmap = fs.readFileSync(image);
-        let base64 = new Buffer.from(bitmap).toString("base64");
-        return base64;
+    const convertImageBase64 = image => {
+      let bitmap = fs.readFileSync(image);
+      let base64 = new Buffer.from(bitmap).toString("base64");
+      return base64;
       };
       //convert image to base64 for database storage
 
-      let scraperPayload = {
-        link: request.body.link,
-        name: nameGen,
-        price: pricer,
-        image: convertImageBase64(save)
+    let scraperPayload = {
+      link: request.body.link,
+      name: nameGen,
+      price: pricer,
+      image: convertImageBase64(save)
       };
       //convert data to object
-
-      fs.rmdir("./image", { recursive: true, force: true }, err => {
-        if (err) {
-          return console.log("error occurred in deleting directory", err);
-        }
-        console.log("Directory deleted successfully");
-      });
+    fs.rmdir("./image", { recursive: true, force: true }, err => {
+      if (err) {
+        return console.log("error occurred in deleting directory", err);
+      }
+      console.log("Directory deleted successfully");
+    });
       //remove the directory and image after processing
-
-      await scraperPayload.catch;
+    await scraperPayload;
       //make sure data is ready
-
-      const finalPayload = new List(scraperPayload);
+    const finalPayload = new List(scraperPayload);
       //convert object to schema
-
-      console.log(finalPayload);
+    console.log(finalPayload);
       //info for server monitoring
-
-      finalPayload.save((err, item) => {
-        //save item to database
-
-        return err ? response.sendStatus(500).json(err) : response.json(item);
-        //returns processed data
+    finalPayload.save((err, item) => {
+      //save item to database
+      return err ? response.sendStatus(500).json(err) : response.json(item);
+      //returns processed data
       });
     })();
   }
@@ -194,6 +192,39 @@ app.post("/gen_data", (request, response) => {
   amazonItemScraper(request.body.link);
   //call function to process data
 });
+
+app.route("./save").post((request, response) => {
+  let completeList = new Download(request.body.html);
+  let newFile = request.body.html.join('');
+  let htmlPath = './download';
+
+completeList.save((err, item) => {
+        //save item to database
+        fs.writeFile(htmlPath`/${item.body._id}.html`, newFile, (err) =>{
+
+        });
+
+        return err ? response.sendStatus(500).json(err) : response.json(item);
+        //returns processed data
+      });
+
+
+  /*fs.rmdir("./download", { recursive: true, force: true }, err => {
+    if (err) {
+      return console.log("error occurred in deleting directory", err);
+    }
+    console.log("Directory deleted successfully");
+  });*/
+
+});
+
+
+app.route("/download").get((request, response) => {
+  response.download('./download/test.html');
+
+});
+
+
 
 app.route("/**").get((request, response) => {
   response.status(404).json({ message: "Not Found" });
