@@ -16,7 +16,8 @@ export default (st) => html`
     )}
   </section>
   </div>
-  <div id="buttonContainer">
-  <input type="button" id="printButton" value="print list"></div>
+    <div id="buttonContainer">
+      <input type="button" id="printButton" value="print list">
+    </div>
   </div>
 `;

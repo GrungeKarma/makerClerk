@@ -31,7 +31,7 @@ function render(st = state.Home) {
   router.updatePageLinks();
   addEventListeners(st);
   urlAddEventListeners();
-  printAddEventListeners();
+  saveListEventListener();
 }
 
 function addEventListeners() {
@@ -40,24 +40,29 @@ function addEventListeners() {
   });
 }
 
-
-
-function printAddEventListeners() {
+function saveListEventListener() {
   document
-  .querySelector("#printButton")
-  .addEventListener("click", () =>{
-    printDiv();
-    console.log('button clicked');
-  });
+  .getElementById('printButton')
+  .addEventListener("click", () => exportList());
 }
 
-function printDiv() {
-  let divToPrint = document.getElementById('final');
-  let popupWin = window.open('', '_blank', 'width=300,height=300');
-  popupWin.document.open();
-  popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
-  popupWin.document.close();
+function exportList (){
+  let target = document.getElementById('final').innerHTML;
+  console.log(target);
+  fetch(`${process.env.MAKER_API_URL}/complete_list`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ list: target }, null, 1)
+  })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+    });
 }
+
+
 
 
 
@@ -68,7 +73,7 @@ function urlAddEventListeners() {
 }
 
 function getURL() {
-  const loading = `Retrieving Data...`;
+  const loading = `<div class="loader">Loading...</div>`;
   let target = document.getElementById("userInput").value;
 
   document.querySelector("#load").innerHTML = loading;

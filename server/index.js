@@ -46,10 +46,15 @@ const listSchema = new mongoose.Schema({
   price: String,
   link: String
 });
+const completeListSchema = new mongoose.Schema({
+  list: String
+});
 //contract of the data
 
 //convert schema a Model
 const List = mongoose.model("List", listSchema);
+const CompleteList = mongoose.model("CompleteList", completeListSchema);
+
 
 app.post("/gen_data", (request, response) => {
   const rand1 = Math.random()
@@ -138,8 +143,8 @@ app.post("/gen_data", (request, response) => {
 
       const resize = (async () => {
         const image = await resizeImg(fs.readFileSync(`${save}`), {
-            width: 150,
-            height: 100
+            width: 125,
+            height: 150
         });
         fs.writeFileSync(`${save}`, image);
       })();
@@ -192,6 +197,29 @@ app.post("/gen_data", (request, response) => {
 
   amazonItemScraper(request.body.link);
   //call function to process data
+});
+
+app.post('/complete_list', (request, response) => {
+  const rand1 = Math.random()
+  .toString(16)
+  .substr(2, 8);
+
+
+  let monkey = request.body.list;
+  console.log(monkey);
+  fs.writeFile(`./download/list${rand1}.html`, monkey, function (err) {
+    if (err) return console.log(err);
+    console.log('success');
+  });
+  response.status(200).json({ filename: `list${rand1}.html` });
+
+});
+
+app.post('/download', function(request, response){
+  let monkey = `./download/${request.body.file}`;
+  console.log(monkey);
+  response.download(monkey); // Set disposition and send it.
+
 });
 
 app.route("/**").get((request, response) => {
