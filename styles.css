@@ -249,6 +249,10 @@ nav > ul > *:hover {
   margin-bottom: 10px;
 }
 
+#printButton:hover {
+  background-color: var(--accentGreen);
+}
+
 #inputButton:hover {
   background-color: var(--accentGreen);
 }
@@ -309,6 +313,14 @@ nav > ul > *:hover {
 
 #q {
   cursor: pointer;
+}
+
+#gallery{
+  min-height: 100vh;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  max-width: 100vw;
 }
 
 .loader {

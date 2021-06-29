@@ -8,8 +8,10 @@ export default () => html`
         <button id="inputButton" type="button">
           submit
         </button>
-
         <div id="load"></div>
+        <button id="printButton" type="button">
+          Print List
+        </button>
         <div id="bigBangPayload"></div>
       </div>
     </div>

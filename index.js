@@ -31,7 +31,7 @@ function render(st = state.Home) {
   router.updatePageLinks();
   addEventListeners(st);
   urlAddEventListeners();
-  saveListEventListener();
+  listAddEventListeners();
 }
 
 function addEventListeners() {
@@ -40,27 +40,59 @@ function addEventListeners() {
   });
 }
 
-function saveListEventListener() {
+function listAddEventListeners() {
   document
-  .getElementById('printButton')
-  .addEventListener("click", () => exportList());
+    .getElementById("printButton")
+    .addEventListener("click", () => {
+      console.log('click');
+      exportList();}
+      );
 }
-
 function exportList (){
-  let target = document.getElementById('final').innerHTML;
-  console.log(target);
-  fetch(`${process.env.MAKER_API_URL}/complete_list`, {
+  let monkey = state.Gallery.pictures.reduce(
+    (html, card) => html + card
+  );
+  let orange = JSON.stringify({ html: monkey }, null, 1);
+
+fetch(`${process.env.MAKER_API_URL}/complete_list`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({ list: target }, null, 1)
+    body: orange
   })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
+      let apple = res.filename;
+
+      let grape = JSON.stringify({ filename: apple }, null, 1);
+      console.log(grape);
+
+      fetch(`${process.env.MAKER_API_URL}/download`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: grape
+      })
+        .then(res => res.blob())
+        .then( blob => {
+          console.log(blob);
+          const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.style.display = "none";
+        a.href = url;
+        // the filename you want
+        a.download = "list.html";
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        alert("your file has downloaded!"); // or you know, something with better UX...
+      })
+      .catch(() => alert("oh no!"));
     });
 }
+
 
 
 
@@ -69,7 +101,10 @@ function exportList (){
 function urlAddEventListeners() {
   document
     .getElementById("inputButton")
-    .addEventListener("click", () => getURL());
+    .addEventListener("click", () => {
+      console.log('click');
+      getURL();}
+      );
 }
 
 function getURL() {
@@ -92,68 +127,9 @@ function getURL() {
       let price = res.price;
       let link = res.link;
       console.log(name, price, link);
-      let listHtml = `
-      <div class="bigBang">
-        <div class="cardContainer" style="  grid-area: body5;
-          background-color: #f5f5f5;
-          color: black;
-          border-radius: 10px;
-          padding: 10px;
-          min-height: 300px;
-          max-width: 50vw;
-          margin: 10px;
-          display: flex;
-          flex-direction: column;
-          border: solid 5px #21B6A8;
-          min-width: 300px;
-          justify-content: center;
-          align-items: center;
-        ">
-        <div>
-          <a id="nameLink" target="_blank" href="${link}" style="
-            padding: 10px;
-            text-align: center;
-            display: flex;
-            font-size: 25px;
-            text-decoration: none;
-            color: black;
-          ">
-            ${name}
-          </a>
-        </div>
-          <div class="itemImage" style="
-            padding: 10px;
-            display: inline-flex;
-            justify-content: center;
-          ">
-            <img src="data:image/png;base64,${image}"id="bigBangImage"/>
-          </div>
-          <div id="namePrice" style="
-            padding: 5px;
-            display: flex;
-            flex-direction: column;">
-
-          <div>
-            <p id="price" style="
-              margin: 10px;
-              width: min-content;
-              height: 65px;
-              border: solid 5px #0b3d1d;
-              background-color: #116530;
-              border-radius: 10px;
-              color:#f5f5f5;
-              font-size: 45px;
-              display: inline-block;
-
-              ">
-                ${price}
-            </p>
-          </div>
-        </div>
-      </div>
-      `;
-
+      let listHtml = `<div class="bigBang"><div class="cardContainer" style="  grid-area: body5;background-color: #f5f5f5;color: black;border-radius: 10px;padding: 10px;min-height: 300px;max-width: 50vw;margin: 10px;display: flex;flex-direction: column;border: solid 5px #21B6A8;min-width: 300px;justify-content: center;align-items: center;"><div><a id="nameLink"target="_blank"href="${link}"style="padding: 10px;text-align: center;display: flex;font-size: 25px;text-decoration: none;color: black;">${name}</a></div><div class="itemImage"style="padding: 10px;display: inline-flex;justify-content: center;"><img src="data:image/png;base64,${image}"id="bigBangImage"/></div><div id="namePrice" style="padding: 5px;display: flex;flex-direction: column;"><div><p id="price" style="margin: 10px;width: min-content;height: 65px;border: solid 5px #0b3d1d;background-color: #116530;border-radius: 10px;color:#f5f5f5;font-size: 45px;display: inline-block;">${price}</p></div></div></div>`;
       console.log(listHtml);
+      console.log(JSON.stringify({html: listHtml}, null, 1));
       document.querySelector("#userInput").value = null;
 
 

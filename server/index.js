@@ -204,8 +204,7 @@ app.post('/complete_list', (request, response) => {
   .toString(16)
   .substr(2, 8);
 
-
-  let monkey = request.body.list;
+  let monkey = request.body.html;
   console.log(monkey);
   fs.writeFile(`./download/list${rand1}.html`, monkey, function (err) {
     if (err) return console.log(err);
@@ -216,9 +215,9 @@ app.post('/complete_list', (request, response) => {
 });
 
 app.post('/download', function(request, response){
-  let monkey = `./download/${request.body.file}`;
+  let monkey = `./download/${request.body.filename}`;
   console.log(monkey);
-  response.download(monkey); // Set disposition and send it.
+  response.download(monkey);
 
 });
 
