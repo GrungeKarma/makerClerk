@@ -204,6 +204,13 @@ app.post('/complete_list', (request, response) => {
   .toString(16)
   .substr(2, 8);
 
+  fs.mkdir("./download", err => {
+    if (err) {
+      return console.error(err);
+    }
+    console.log("Directory created successfully!");
+  });
+
   let monkey = request.body.html;
   console.log(monkey);
   fs.writeFile(`./download/list${rand1}.html`, monkey, function (err) {
@@ -218,6 +225,12 @@ app.post('/download', function(request, response){
   let monkey = `./download/${request.body.filename}`;
   console.log(monkey);
   response.download(monkey);
+  fs.rmdir("./download", { recursive: true, force: true }, err => {
+    if (err) {
+      return console.log("error occurred in deleting directory", err);
+    }
+    console.log("Directory deleted successfully");
+  });
 
 });
 

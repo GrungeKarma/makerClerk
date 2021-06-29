@@ -83,7 +83,7 @@ fetch(`${process.env.MAKER_API_URL}/complete_list`, {
         a.style.display = "none";
         a.href = url;
         // the filename you want
-        a.download = "list.html";
+        a.download = `${apple}`;
         document.body.appendChild(a);
         a.click();
         window.URL.revokeObjectURL(url);
