@@ -52,7 +52,13 @@ function exportList (){
   let monkey = state.Gallery.pictures.reduce(
     (html, card) => html + card
   );
-  let orange = JSON.stringify({ html: monkey }, null, 1);
+  let banana = `<div style="display: flex; flex-direction: column; background-color: #116530; align-items: center; min-width: 100vw; min-height: 100vh"><h1 style="color: white; padding: 0px; font-family: Arial Black; font-size: 150px;">makerClerk</h1>`;
+  let pea = `</div>`;
+
+  let ape = banana.concat('', monkey, pea);
+
+  let orange = JSON.stringify({ html: ape }, null, 1);
+
 
 fetch(`${process.env.MAKER_API_URL}/complete_list`, {
     method: "POST",
