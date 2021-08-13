@@ -8,11 +8,6 @@ export default (st) => html`
       ``
     )}
   </section>
-  </div>
-    <div id="buttonContainer">
-    <button id="printButton" type="button">
-          Print List
-        </button>
-    </div>
+
   </div>
 `;
