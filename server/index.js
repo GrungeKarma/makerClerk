@@ -62,7 +62,7 @@ app.post("/gen_data", (request, response) => {
     .substr(2, 8);
   //generate random string to use as image name for manipulation
 
-  async function amazonItemScraper(url) {
+  function amazonItemScraper(url) {
     (async () => {
       fs.mkdir("./image", err => {
         if (err) {
@@ -79,8 +79,11 @@ app.post("/gen_data", (request, response) => {
       const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
       let page = await browser.newPage();
       //launch puppeteer
-
-      await page.goto(imageUrl), { waitUntil: "networkidle2" };
+      try {
+        await page.goto(imageUrl), { waitUntil: "networkidle2" }
+      } catch (err) {
+        return err ? response.sendStatus(500).json(err) : response.json(item);
+      };
       //send puppeteer to the url and waits until everything is rendered
 
       await page.waitForSelector("#landingImage");
@@ -143,8 +146,8 @@ app.post("/gen_data", (request, response) => {
 
       const resize = (async () => {
         const image = await resizeImg(fs.readFileSync(`${save}`), {
-            width: 125,
-            height: 150
+          width: 125,
+          height: 150
         });
         fs.writeFileSync(`${save}`, image);
       })();
@@ -195,14 +198,14 @@ app.post("/gen_data", (request, response) => {
   console.log(request.body.link);
   //backend data monitoring
 
-  amazonItemScraper(request.body.link);
+  amazonItemScraper(request.body.link.trim());
   //call function to process data
 });
 
 app.post('/complete_list', (request, response) => {
   const rand1 = Math.random()
-  .toString(16)
-  .substr(2, 8);
+    .toString(16)
+    .substr(2, 8);
 
   fs.mkdir("./download", err => {
     if (err) {
@@ -221,7 +224,7 @@ app.post('/complete_list', (request, response) => {
 
 });
 
-app.post('/download', function(request, response){
+app.post('/download', function (request, response) {
   let monkey = `./download/${request.body.filename}`;
   console.log(monkey);
   response.download(monkey);
