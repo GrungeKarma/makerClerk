@@ -45,10 +45,11 @@ function listAddEventListeners() {
     .getElementById("printButton")
     .addEventListener("click", () => {
       console.log('click');
-      exportList();}
-      );
+      exportList();
+    }
+    );
 }
-function exportList (){
+function exportList() {
   let monkey = state.Gallery.pictures.reduce(
     (html, card) => html + card
   );
@@ -60,7 +61,7 @@ function exportList (){
   let orange = JSON.stringify({ html: ape }, null, 1);
 
 
-fetch(`${process.env.MAKER_API_URL}/complete_list`, {
+  fetch(`${process.env.MAKER_API_URL}/complete_list`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -82,20 +83,20 @@ fetch(`${process.env.MAKER_API_URL}/complete_list`, {
         body: grape
       })
         .then(res => res.blob())
-        .then( blob => {
+        .then(blob => {
           console.log(blob);
           const url = window.URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.style.display = "none";
-        a.href = url;
-        // the filename you want
-        a.download = `${apple}`;
-        document.body.appendChild(a);
-        a.click();
-        window.URL.revokeObjectURL(url);
-        alert("your file has downloaded!"); // or you know, something with better UX...
-      })
-      .catch(() => alert("oh no!"));
+          const a = document.createElement("a");
+          a.style.display = "none";
+          a.href = url;
+          // the filename you want
+          a.download = `${apple}`;
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+          alert("your file has downloaded!"); // or you know, something with better UX...
+        })
+        .catch(() => alert("oh no!"));
     });
 }
 
@@ -109,8 +110,9 @@ function urlAddEventListeners() {
     .getElementById("inputButton")
     .addEventListener("click", () => {
       console.log('click');
-      getURL();}
-      );
+      getURL();
+    }
+    );
 }
 
 function getURL() {
@@ -135,7 +137,7 @@ function getURL() {
       console.log(name, price, link);
       let listHtml = `<div class="bigBang"><div class="cardContainer" style="  grid-area: body5;background-color: #f5f5f5;color: black;border-radius: 10px;padding: 10px;min-height: 300px;max-width: 50vw;margin: 10px;display: flex;flex-direction: column;border: solid 5px #21B6A8;min-width: 300px;justify-content: center;align-items: center;"><div><a id="nameLink"target="_blank"href="${link}"style="padding: 10px;text-align: center;display: flex;font-size: 25px;text-decoration: none;color: black;">${name}</a></div><div class="itemImage"style="padding: 10px;display: inline-flex;justify-content: center;"><img src="data:image/png;base64,${image}"id="bigBangImage"/></div><div id="namePrice" style="padding: 5px;display: flex;flex-direction: column;"><div><p id="price" style="margin: 10px;width: min-content;height: 65px;border: solid 5px #0b3d1d;background-color: #116530;border-radius: 10px;color:#f5f5f5;font-size: 45px;display: inline-block;">${price}</p></div></div></div>`;
       console.log(listHtml);
-      console.log(JSON.stringify({html: listHtml}, null, 1));
+      console.log(JSON.stringify({ html: listHtml }, null, 1));
       document.querySelector("#userInput").value = null;
 
 
@@ -146,6 +148,11 @@ function getURL() {
 
 
 
+
+    }).catch((e) => {
+      document.querySelector("#userInput").value = null;
+      document.querySelector("#load").innerHTML = null;
+      alert('Something Went Wrong. Please try a different link')
 
     });
 }

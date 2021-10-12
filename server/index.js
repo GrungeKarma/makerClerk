@@ -76,14 +76,16 @@ app.post("/gen_data", (request, response) => {
       let imagePath = `./image`;
       //assign a name to url and the path for saving image
 
-      const browser = await puppeteer.launch({ args: ["--no-sandbox"] });
+      const browser = await puppeteer.launch({ args: ["--no-sandbox"] })
       let page = await browser.newPage();
       //launch puppeteer
-      try {
-        await page.goto(imageUrl), { waitUntil: "networkidle2" }
-      } catch (err) {
-        return err ? response.sendStatus(500).json(err) : response.json(item);
-      };
+
+      await page.goto(imageUrl).catch(e => {
+        response.sendStatus(500).json(e)
+        process.exit()
+
+      }), { waitUntil: 'networkidle0', timeout: 0 }
+
       //send puppeteer to the url and waits until everything is rendered
 
       await page.waitForSelector("#landingImage");
@@ -193,13 +195,17 @@ app.post("/gen_data", (request, response) => {
         return err ? response.sendStatus(500).json(err) : response.json(item);
         //returns processed data
       });
-    })();
+    })().catch(e => response.sendStatus(500).json(e));
   }
+
   console.log(request.body.link);
   //backend data monitoring
-
-  amazonItemScraper(request.body.link.trim());
-  //call function to process data
+  try {
+    amazonItemScraper(request.body.link.trim());
+    //call function to process data
+  } catch (error) {
+    response.sendStatus(500).json(err)
+  }
 });
 
 app.post('/complete_list', (request, response) => {
